@@ -1,9 +1,11 @@
+import Header from './Header'
+import Search from './Search'
+
 function App() {
   return (
     <div>
-      <header>
-        I bless the rains down in Africa
-      </header>
+      <Header/>
+      <Search/>
     </div>
   );
 }
