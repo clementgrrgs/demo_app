@@ -1,10 +1,13 @@
 import Form from './Form';
+import Information from './information/Information';
 
 const Search = () => {
 
+    
     return (
-        <div>
+        <div className="container">
             <Form/>
+            <Information/>
         </div>
     );
 }
