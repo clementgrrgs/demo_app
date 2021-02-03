@@ -45,12 +45,13 @@ function Form(){
     }
 
     return (
-        <div className="row">
+        <div className="row" aria-label="form-div">
             <form className="col s12" onSubmit={handleSubmit}>
             <div className="row">
                 <div className="input-field col s8">
                     <input  id="movie_title" 
                             type="text" 
+                            aria-label="movie"
                             className="validate" 
                             required 
                             onChange={(e) => setMovie(e.target.value)}
