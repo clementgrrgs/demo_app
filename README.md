@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# Demo_app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About the App
+
+This app can acces informations about a movie through its title.\
+To look to a movie enter its title in the input and click on the button Search.
 
 ## Available Scripts
 
