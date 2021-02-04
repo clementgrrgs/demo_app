@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 import { fetchMovie } from '../actions/index'
 
 
@@ -18,30 +19,16 @@ function Form(){
         document.getElementById('error_text').textContent = error;
     },[error])
 
-
-    async function getMovie(movieTitle){
-        const response = await fetch('http://www.omdbapi.com/?apikey=d55ae30d&t='+movieTitle.replace(' ','+'));
-
-        if(!response.ok){
-            const message = 'An error as occured : '+response.status;
-            setError("An error has occured");
-            throw new Error(message);
-        }
-        const movieInfo = await response.json();
-        return movieInfo;
-    }
-
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
-        
-        getMovie(movie).then((result) => {
+        try{
+            const response = await axios.get('http://www.omdbapi.com/?apikey=d55ae30d&t='+movie.replace(' ','+'));
+            dispatch(fetchMovie(response.data));
             setError('');
-            dispatch(fetchMovie(result));
-        },
-        (error) => {
+        } catch (error){
             setError("An error has occured");
             console.log('An error as occured : '+error.message);
-        });    
+        }       
     }
 
     return (
@@ -51,13 +38,13 @@ function Form(){
                 <div className="input-field col s8">
                     <input  id="movie_title" 
                             type="text" 
-                            aria-label="movie"
                             className="validate" 
+                            aria-label="label-input"
                             required 
                             onChange={(e) => setMovie(e.target.value)}
                     />
                     <label htmlFor="movie_title">Movie title</label>
-                    <span id='helper_text' className="helper-text"></span>
+                    <span id='helper_text' className="helper-text" aria-label="label-helper"></span>
                     <span id="error_text" className="helper-text"></span>
                 </div>
                 <div className="input-field  center col s4">
