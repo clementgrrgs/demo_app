@@ -16,11 +16,11 @@ function Information(){
     ];
 
     return (
-        <div className="row">
-            <div className="col s5">
+        <div className="row" aria-label="info-div">
+            <div className="col s5" aria-label="label-poster">
                 { (Object.keys(store).length > 0) && <img src={store["Poster"]} alt="movie poster"/> }
             </div>
-            <div className="col s5">
+            <div className="col s5" aria-label="label-infofield">
                 {
                     Object.keys(store).map((key,index) => {
                         if (infoToShow.includes(key)) {
