@@ -2,8 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import InformationField from './InformationField';
 
-function Information(){
 
+/** 
+ *  Show informations from the object movie get in Redux store 
+ */
+
+function Information(){
     const store = useSelector(state => state.movie) || {};
     const infoToShow = [
         "Title",
@@ -17,10 +21,10 @@ function Information(){
 
     return (
         <div className="row" aria-label="info-div">
-            <div className="col s5" aria-label="label-poster">
-                { (Object.keys(store).length > 0) && <img src={store["Poster"]} alt="movie poster"/> }
+            <div className="col s12 l5 center" aria-label="label-poster">
+                { store.Poster && (store.Poster !== "N/A") && <img src={store["Poster"]} alt="movie poster"/> }
             </div>
-            <div className="col s5" aria-label="label-infofield">
+            <div className="col s12 l5" aria-label="label-infofield">
                 {
                     Object.keys(store).map((key,index) => {
                         if (infoToShow.includes(key)) {
@@ -32,7 +36,6 @@ function Information(){
             </div>
         </div>
     );
-
 }
 
 export default Information;

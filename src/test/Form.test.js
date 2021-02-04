@@ -27,9 +27,9 @@ describe ('Form Component', () => {
     });
 
 
-    test ('Input value should change textHelper', () => {
+    test ('Input value should modify textHelper', () => {
         let input = screen.getByLabelText('label-input');
-        expect(screen.getByLabelText("label-helper").textContent).toBe('Get movie information from his title');
+        expect(screen.getByLabelText("label-helper").textContent).toBe('Get movie informations from its title');
 
         fireEvent.change(input, {target : { value: 'Movie Title' }});
         expect(screen.getByLabelText("label-helper").textContent).toBe('Click on search to get informations about the movie : Movie Title');
